@@ -1,12 +1,48 @@
 
 
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
+//Actions de redux
+import { crearNuevoProductoAction } from "../actions/productoActions"
+
+
 export const NuevoProducto = () => {
+
+    const [nombre, setNombre] = useState('')
+    const [precio, setPrecio] = useState(0)
+
+    // utilizar useDispatch y te crea una funcion
+    const dispatch = useDispatch();
+
+    // mandar llamar el action del producto action
+    const agregarProducto = producto => dispatch(crearNuevoProductoAction(producto))
+
+    //Cuando el usuario haga submit
+    const submitNuevoProducto = e => {
+        e.preventDefault()
+
+        //Validar formulario
+    if(nombre.trim() === '' || precio <= 0) {
+        console.log('Error...');
+        return
+    }
+
+        //Si no hay errores
+
+        //Crear nuevo producto
+        agregarProducto({
+            nombre,
+            precio
+        })
+    }
+
     return (
         <div className="flex flex-col justify-center items-center">
             <h2 className="text-center text-2xl mb-10">Agregar nuevo producto</h2>
             <form
-                className="bg-white py-10 w-full m-4 md:w-10/12 md:m-0   rounded-lg px-4 shadow-sm hover:shadow-lg transition-all"
-                // onSubmit={handleSubmit}
+                onSubmit={submitNuevoProducto}
+                className="bg-white m-4 py-10 p-4   md:m-0 rounded-lg  shadow-sm hover:shadow-lg transition-all"
+            // onSubmit={handleSubmit}
             >
 
                 <div className="px-4 mb-4">
@@ -18,8 +54,8 @@ export const NuevoProducto = () => {
                         type="text"
                         className="border w-full mt-2 placeholder-gray-400 rounded p-2"
                         placeholder="Nombre del producto"
-                        // value={nombre}
-                        // onChange={e => setNombre(e.target.value)}
+                        value={nombre}
+                        onChange={e => setNombre(e.target.value)}
                     />
                 </div>
                 <div className="px-4 mb-4">
@@ -31,8 +67,8 @@ export const NuevoProducto = () => {
                         type='number' min={0}
                         className="border w-full mt-2 placeholder-gray-400 rounded p-2"
                         placeholder="Precio del producto"
-                        // value={descripcion}
-                        // onChange={e => setDescripcion(e.target.value)}
+                        value={precio}
+                        onChange={e => setPrecio(Number(e.target.value))}
                     />
                 </div>
                 {/* <div className="px-4 mb-4">
