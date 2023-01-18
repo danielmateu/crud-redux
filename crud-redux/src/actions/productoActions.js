@@ -1,6 +1,12 @@
 import clienteAxios from '../../config/axios';
 
-import { AGREGAR_PRODUCTO, AGREGAR_PRODUCTO_EXITO, AGREGAR_PRODUCTO_ERROR, COMENZAR_DESCARGA_PRODUCTOS, COMENZAR_DESCARGA_EXITO, COMENZAR_DESCARGA_ERROR } from '../types';
+import { 
+    AGREGAR_PRODUCTO, 
+    AGREGAR_PRODUCTO_EXITO, 
+    AGREGAR_PRODUCTO_ERROR, 
+    COMENZAR_DESCARGA_PRODUCTOS, 
+    COMENZAR_DESCARGA_EXITO, 
+    COMENZAR_DESCARGA_ERROR } from '../types';
 
 import Swal from 'sweetalert2'
 
@@ -52,4 +58,16 @@ const agregarProductoExito = (producto) => ({
 const agregarProductoError = (estado) => ({
     type: AGREGAR_PRODUCTO_ERROR,
     payload: estado
+})
+
+//FUncion que descarga los productos de la API
+export function obtenerProductosAction() {
+    return async (dispatch) => {
+        dispatch(descargarProductos())
+    }
+}
+
+const descargarProductos = () => ({
+    type: COMENZAR_DESCARGA_PRODUCTOS,
+    payload: true
 })

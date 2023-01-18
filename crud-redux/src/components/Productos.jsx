@@ -1,6 +1,22 @@
 
 
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'
+import { obtenerProductosAction } from '../actions/productoActions'
+
+
 export const Productos = () => {
+
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        //COnsultar la api
+        const cargarProductos = () => dispatch(obtenerProductosAction());
+        cargarProductos()
+    }, [])
+
+
     return (
         <>
             <h2 className="text-2xl text-center">Listado de productos</h2>
@@ -15,21 +31,7 @@ export const Productos = () => {
                 </thead>
 
                 <tbody className="">
-                    {/* <tr>
-                        <td>Nombre</td>
-                        <td>Precio</td>
-                        <td>Acciones</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>Precio</td>
-                        <td>Acciones</td>
-                    </tr>
-                    <tr>
-                        <td>Nombre</td>
-                        <td>Precio</td>
-                        <td>Acciones</td>
-                    </tr> */}
+
                 </tbody>
             </table>
         </>
