@@ -74,6 +74,7 @@ export function obtenerProductosAction() {
             // console.log(respuesta.data)
             dispatch(descargaProductosExistosa(respuesta.data))
         } catch (error) {
+            console.log(error);
             dispatch(descargaProductosError())
         }
     }

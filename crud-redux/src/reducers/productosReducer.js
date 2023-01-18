@@ -40,19 +40,14 @@ export default function (state = initialState, action) {
                 error: action.payload
             }
 
-        case COMENZAR_DESCARGA_PRODUCTOS:
+        case DESCARGA_PRODUCTOS_EXITO:
             return {
                 ...state,
                 loading: false,
                 error: null,
                 productos: action.payload
-            }
-        case DESCARGA_PRODUCTOS_EXITO:
-            return {
-                ...state,
 
             }
-
 
         default:
             return state;
