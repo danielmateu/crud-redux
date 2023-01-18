@@ -5,8 +5,12 @@ import {
     AGREGAR_PRODUCTO_EXITO, 
     AGREGAR_PRODUCTO_ERROR, 
     COMENZAR_DESCARGA_PRODUCTOS, 
-    COMENZAR_DESCARGA_EXITO, 
-    COMENZAR_DESCARGA_ERROR } from '../types';
+    // COMENZAR_DESCARGA_EXITO,
+    DESCARGA_PRODUCTOS_EXITO,
+    // COMENZAR_DESCARGA_ERROR,
+    DESCARGA_PRODUCTOS_ERROR,
+
+} from '../types';
 
 import Swal from 'sweetalert2'
 
@@ -64,10 +68,28 @@ const agregarProductoError = (estado) => ({
 export function obtenerProductosAction() {
     return async (dispatch) => {
         dispatch(descargarProductos())
+
+        try {
+            const respuesta = await clienteAxios.get('/productos' )
+            // console.log(respuesta.data)
+            dispatch(descargaProductosExistosa(respuesta.data))
+        } catch (error) {
+            dispatch(descargaProductosError())
+        }
     }
 }
 
 const descargarProductos = () => ({
     type: COMENZAR_DESCARGA_PRODUCTOS,
+    payload: true
+})
+
+const descargaProductosExistosa = (productos) => ({
+    type: DESCARGA_PRODUCTOS_EXITO,
+    payload: productos
+})
+
+const descargaProductosError = () => ({
+    type: DESCARGA_PRODUCTOS_ERROR,
     payload: true
 })
