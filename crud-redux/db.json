@@ -26,19 +26,24 @@
       "id": 5
     },
     {
-      "nombre": "caca",
-      "precio": 250,
+      "nombre": "caca de la buena",
+      "precio": 10,
       "id": 6
     },
     {
-      "nombre": "caca",
-      "precio": 250,
+      "nombre": "more shit",
+      "precio": 50,
       "id": 7
     },
     {
-      "nombre": "más caca",
-      "precio": 250,
+      "nombre": "Caca de la buena",
+      "precio": 10,
       "id": 8
+    },
+    {
+      "nombre": "Dani",
+      "precio": 100,
+      "id": 9
     }
   ]
 }

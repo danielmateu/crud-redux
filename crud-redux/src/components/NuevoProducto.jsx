@@ -1,18 +1,29 @@
 
 
 import { useState } from "react";
+
+import {useNavigate} from 'react-router-dom'
+
 import { useDispatch, useSelector } from "react-redux"
 //Actions de redux
 import { crearNuevoProductoAction } from "../actions/productoActions"
 
 
-export const NuevoProducto = () => {
+export const NuevoProducto = ({history}) => {
 
     const [nombre, setNombre] = useState('')
     const [precio, setPrecio] = useState(0)
 
+    let navigate = useNavigate()
+
     // utilizar useDispatch y te crea una funcion
     const dispatch = useDispatch();
+
+    //Acceder al state del store
+    const cargando = useSelector( state => state.productos.loading);
+    // console.log(cargando)
+    const error = useSelector( state => state.productos.error);
+
 
     // mandar llamar el action del producto action
     const agregarProducto = producto => dispatch(crearNuevoProductoAction(producto))
@@ -34,6 +45,9 @@ export const NuevoProducto = () => {
             nombre,
             precio
         })
+
+        // redireccionar
+        navigate('/')
     }
 
     return (
@@ -105,6 +119,9 @@ export const NuevoProducto = () => {
                     msg && <Alerta alerta={alerta} />
                 } */}
             </form>
+
+            {cargando ? <p>Cargando...</p> : null}
+            {error ? <p className="text-red-500 font-semibold">Ha ocurrido un error</p> : null}
 
 
         </div>

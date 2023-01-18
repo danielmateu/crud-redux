@@ -1,30 +1,40 @@
-import clienteAxios from '../../config/axios'
-// import {axios} from 'axios'
+import clienteAxios from '../../config/axios';
 
-import {
-    AGREGAR_PRODUCTO,
-    AGREGAR_PRODUCTO_EXITO,
-    AGREGAR_PRODUCTO_ERROR,
-} from '../types'
+import { AGREGAR_PRODUCTO, AGREGAR_PRODUCTO_EXITO, AGREGAR_PRODUCTO_ERROR, COMENZAR_DESCARGA_PRODUCTOS, COMENZAR_DESCARGA_EXITO, COMENZAR_DESCARGA_ERROR } from '../types';
 
-
+import Swal from 'sweetalert2'
 
 //Crear nuevos productos
-export function crearNuevoProductoAction(producto){
-    return (dispatch) => {
+export function crearNuevoProductoAction(producto) {
+    return async (dispatch) => {
         dispatch(agregarProducto())
 
         try {
 
             //Insertar en la API
-            clienteAxios.post('/productos', producto)
+            await clienteAxios.post('/productos', producto)
 
             //Si todo sale bien, actualizar el state
             dispatch(agregarProductoExito(producto))
+
+            //Alerta
+            Swal.fire(
+                'Good job!',
+                'El producto se agregó correctamente!',
+                'success'
+            )
         } catch (error) {
             console.log(error);
             //Si hay un error, cambiar el state
             dispatch(agregarProductoError(true))
+
+            //Alerta de error
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Algo ha salido mal...',
+                // footer: '<a href="">Qué ha pasado?</a>'
+            })
         }
     }
 }
