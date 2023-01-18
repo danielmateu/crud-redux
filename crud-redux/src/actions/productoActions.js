@@ -10,6 +10,9 @@ import {
     OBTENER_PRODUCTO_ELIMINAR,
     PRODUCTO_ELIMINADO_EXITO,
     PRODUCTO_ELIMINADO_ERROR,
+    OBTENER_PRODUCTO_EDITAR,
+    PRODUCTO_EDITADO_EXITO,
+    PRODUCTO_EDITADO_ERROR,
 } from '../types';
 
 import Swal from 'sweetalert2'
@@ -98,7 +101,7 @@ const descargaProductosError = () => ({
 });
 
 //Selecciona y elimina el producto
-export function borrarProductoAction(id){
+export function borrarProductoAction(id) {
     return async (dispatch) => {
         dispatch(obtenerProductoEliminar(id));
 
@@ -130,6 +133,18 @@ const eliminarProductoExito = () => ({
 })
 const eliminarProductoError = () => ({
     type: PRODUCTO_ELIMINADO_ERROR,
-    payload:true 
-    
+    payload: true
+
+})
+
+//Colocar Producto en edición
+export function obtenerProductoEditar(producto) {
+    return (dispatch) => {
+        dispatch(obtenerProdutoEditarAction(producto))
+    }
+}
+
+const obtenerProdutoEditarAction = (producto) => ({
+    type: OBTENER_PRODUCTO_EDITAR,
+    payload: producto
 })

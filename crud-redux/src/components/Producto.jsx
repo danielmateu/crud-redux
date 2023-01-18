@@ -1,15 +1,15 @@
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Swal from 'sweetalert2'
-import { borrarProductoAction } from '../actions/productoActions'
 
 //REdux
+import { useDispatch } from 'react-redux'
+import { borrarProductoAction, obtenerProductoEditar } from '../actions/productoActions'
 
 
 export const Producto = ({ producto }) => {
 
     const { nombre, precio, id } = producto
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     //Confirmar si desea eliminar
@@ -33,16 +33,26 @@ export const Producto = ({ producto }) => {
                 
             }
         })
-
-
     }
+
+    const redireccionEdicion = (producto) => {
+        dispatch(obtenerProductoEditar(producto));
+        navigate(`/productos/editar/${producto.id}`)
+    }
+
+    
 
     return (
         <tr>
             <td>{nombre}</td>
             <td><span className="font-semibold">{precio} €</span></td>
             <td className="flex flex-col sm:flex-row justify-around gap-2">
-                <Link to={`/productos/editar/${id}`} className="text-gray-400 hover:text-gray-600">Editar</Link>
+                <button
+                    onClick={() => redireccionEdicion(producto)}
+                    type='button'
+                    to={`/productos/editar/${id}`}
+                    className="text-gray-400 hover:text-gray-600"
+                >Editar</button>
                 <button
                     onClick={() => confirmarEliminarProducto(id)}
                     type='button'
