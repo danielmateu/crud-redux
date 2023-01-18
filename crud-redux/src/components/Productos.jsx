@@ -24,7 +24,7 @@ export const Productos = () => {
 
     return (
         <>
-            <h2 className="text-2xl text-center">Listado de productos</h2>
+            <h2 className="sm:text-2xl text-center">Listado de productos</h2>
             {error ? <p className='text-red-500 font-semibold text-center'>Ha ocurrido un error</p> : null}
             {cargando ? 
             // <p className='text-sky-500 font-semibold text-center'>Cargando...</p>
@@ -34,9 +34,9 @@ export const Productos = () => {
                             <table className="table-auto border-separate border-spacing-4 border border-slate-500 w-screen mt-10 hover:shadow-lg transition-all rounded-xl">
                                 <thead className="bg-gray-200">
                                     <tr>
-                                        <th className='border border-slate-600'>Nombre</th>
-                                        <th className='border border-slate-600'>Precio</th>
-                                        <th className='border border-slate-600'>Acciones</th>
+                                        <th className='border border-slate-600 rounded p-2'>Nombre</th>
+                                        <th className='border border-slate-600 rounded p-2'>Precio</th>
+                                        <th className='border border-slate-600 rounded p-2'>Acciones</th>
                                     </tr>
                                 </thead>
 

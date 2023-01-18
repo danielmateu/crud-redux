@@ -1,21 +1,6 @@
 {
   "productos": [
     {
-      "id": 1,
-      "nombre": "Jugo de Zanahoria",
-      "precio": "31111"
-    },
-    {
-      "id": 2,
-      "nombre": "Jugo de Naranja",
-      "precio": "1"
-    },
-    {
-      "nombre": "Jugo de Naranja",
-      "precio": "300",
-      "id": 3
-    },
-    {
       "nombre": "Rib Eye 800g",
       "precio": "200",
       "id": 4
@@ -31,13 +16,13 @@
       "id": 6
     },
     {
-      "nombre": "Culo de rana",
-      "precio": 40,
+      "nombre": "Paja de gato",
+      "precio": 150,
       "id": 7
     },
     {
-      "nombre": "Caca de vecino",
-      "precio": 4,
+      "nombre": "Semen de caballo",
+      "precio": 460,
       "id": 8
     }
   ]

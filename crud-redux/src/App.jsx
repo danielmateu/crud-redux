@@ -13,7 +13,7 @@ function App() {
     <Router>
       <Provider store={store}>
         <Header />
-        <div className="px-40 py-10">
+        <div className="px-10 py-10">
           <Routes>
             <Route exact path="/" element={<Productos />} />
             <Route exact path="/productos/nuevo" element={<NuevoProducto />} />
