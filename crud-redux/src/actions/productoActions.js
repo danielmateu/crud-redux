@@ -1,10 +1,10 @@
 import clienteAxios from '../../config/axios';
 
-import { 
-    AGREGAR_PRODUCTO, 
-    AGREGAR_PRODUCTO_EXITO, 
-    AGREGAR_PRODUCTO_ERROR, 
-    COMENZAR_DESCARGA_PRODUCTOS, 
+import {
+    AGREGAR_PRODUCTO,
+    AGREGAR_PRODUCTO_EXITO,
+    AGREGAR_PRODUCTO_ERROR,
+    COMENZAR_DESCARGA_PRODUCTOS,
     // COMENZAR_DESCARGA_EXITO,
     DESCARGA_PRODUCTOS_EXITO,
     // COMENZAR_DESCARGA_ERROR,
@@ -70,9 +70,11 @@ export function obtenerProductosAction() {
         dispatch(descargarProductos())
 
         try {
-            const respuesta = await clienteAxios.get('/productos' )
+
+            const respuesta = await clienteAxios.get('/productos')
             // console.log(respuesta.data)
             dispatch(descargaProductosExistosa(respuesta.data))
+
         } catch (error) {
             console.log(error);
             dispatch(descargaProductosError())

@@ -24,6 +24,21 @@
       "nombre": "Jugo de Fresa",
       "precio": "200",
       "id": 5
+    },
+    {
+      "nombre": "Pedo de rinoceronte",
+      "precio": 50,
+      "id": 6
+    },
+    {
+      "nombre": "Culo de rana",
+      "precio": 40,
+      "id": 7
+    },
+    {
+      "nombre": "Caca de vecino",
+      "precio": 4,
+      "id": 8
     }
   ]
 }
