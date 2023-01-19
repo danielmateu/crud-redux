@@ -7,6 +7,9 @@ import {useNavigate} from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux"
 //Actions de redux
 import { crearNuevoProductoAction } from "../actions/productoActions"
+import { mostrarAlerta, ocultarAlertaAction } from "../actions/alertaActions";
+
+
 
 
 export const NuevoProducto = ({history}) => {
@@ -23,6 +26,7 @@ export const NuevoProducto = ({history}) => {
     const cargando = useSelector( state => state.productos.loading);
     // console.log(cargando)
     const error = useSelector( state => state.productos.error);
+    const alerta = useSelector( state => state.alerta.alerta)
 
 
     // mandar llamar el action del producto action
@@ -34,12 +38,18 @@ export const NuevoProducto = ({history}) => {
 
         //Validar formulario
     if(nombre.trim() === '' || precio <= 0) {
-        console.log('Error...');
-        return
+        // console.log('Error...');
+        const alerta = {
+            msg: 'Todos los campos son obligatorios',
+            classes: 'text-red-500 p-4'
+        }
+
+        dispatch(mostrarAlerta(alerta))
+        return;
     }
 
         //Si no hay errores
-
+        dispatch(ocultarAlertaAction());
         //Crear nuevo producto
         agregarProducto({
             nombre,
@@ -53,10 +63,12 @@ export const NuevoProducto = ({history}) => {
     return (
         <div className="flex flex-col justify-center items-center">
             <h2 className="text-center text-2xl mb-10">Agregar nuevo producto</h2>
+
+            {alerta ? <p className={alerta.classes}>{alerta.msg}</p>: null}
+
             <form
                 onSubmit={submitNuevoProducto}
                 className="bg-white m-4 py-10 p-4   md:m-0 rounded-lg  shadow-sm hover:shadow-lg transition-all"
-            // onSubmit={handleSubmit}
             >
 
                 <div className="px-4 mb-4">

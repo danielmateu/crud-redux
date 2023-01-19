@@ -19,6 +19,21 @@
       "nombre": "Paja de gato",
       "precio": 150,
       "id": 7
+    },
+    {
+      "nombre": "caca de pobre",
+      "precio": 2,
+      "id": 8
+    },
+    {
+      "nombre": "caca de rico",
+      "precio": 10,
+      "id": 9
+    },
+    {
+      "nombre": "caca de gollum",
+      "precio": 1500,
+      "id": 10
     }
   ]
 }
